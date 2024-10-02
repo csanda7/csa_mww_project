@@ -1,5 +1,5 @@
 # `csa_mww_project` package
-ROS 2 C++ package.  [![Static Badge](https://img.shields.io/badge/ROS_2-Humble-34aec5)](https://docs.ros.org/en/humble/)
+This program has to draw a house with a door, using the turtlesime node.
 ## Packages and build
 
 It is assumed that the workspace is `~/ros2_ws/`.
