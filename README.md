@@ -1,4 +1,4 @@
-# `csa_mww_housedraw` package
+# `csa_mww_project` package
 This program has to draw a house with a door, using the turtlesime node.
 ## Packages and build
 
@@ -9,7 +9,7 @@ It is assumed that the workspace is `~/ros2_ws/`.
 cd ~/ros2_ws/src
 ```
 ``` r
-git clone https://github.com/csanda7/csa_mww_housedraw
+git clone https://github.com/csanda7/csa_mww_project
 ```
 
 ### Build ROS 2 packages
@@ -17,7 +17,7 @@ git clone https://github.com/csanda7/csa_mww_housedraw
 cd ~/ros2_ws
 ```
 ``` r
-colcon build --packages-select csa_mww_housedraw --symlink-install
+colcon build --packages-select csa_mww_project --symlink-install
 ```
 
 <details>
@@ -29,6 +29,6 @@ source ~/ros2_ws/install/setup.bash
 </details>
 
 ``` r
-ros2 launch csa_mww_housedraw housedraw.launch.py
+ros2 launch csa_mww_project housedraw.launch.py
 ```
 
