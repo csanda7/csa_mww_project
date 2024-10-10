@@ -11,7 +11,7 @@ def generate_launch_description():
         ),
 
         Node(
-            package='csa_mww_project',
+            package='csa_mww_housedraw',
             executable='house_draw',
             output='screen',
         ),
