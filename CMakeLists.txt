@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.8)
-project(csa_mww_project)
+project(csa_mww_housedraw)
 
 # Default to C++14
 if(NOT CMAKE_CXX_STANDARD)
@@ -23,14 +23,14 @@ set(ament_dependencies
   turtlesim
 )
 
-add_executable(house_draw src/house_draw.cpp)
-ament_target_dependencies(house_draw ${ament_dependencies} )
+# add_executable(house_draw src/house_draw.cpp)
+# ament_target_dependencies(house_draw ${ament_dependencies} )
 
 install(DIRECTORY launch
   DESTINATION share/${PROJECT_NAME})
 
 install(TARGETS
- house_draw
+# simple_sub_node
 DESTINATION lib/${PROJECT_NAME})
 
 
