@@ -33,21 +33,21 @@ private:
         RCLCPP_INFO_STREAM(this->get_logger(), "Loop started.");
 
         for (int i = 0; i < 4; i++) {
-            publish_message(2.0, 0.0, 2.0);    // Move forward to draw one side of the square
-            publish_message(0.0, M_PI_2, 2.0); // Turn 90 degrees to the right
+            publish_message(2.0, 0.0, 2.0);    
+            publish_message(0.0, M_PI_2, 2.0); 
         }
 
-        // Move to start of the triangle roof (top of the square)
-        publish_message(2.0, 0.0, 2.0);  // Move to the top side of the square
         
-        // Draw the equilateral triangle roof
+        publish_message(2.0, 0.0, 2.0);  
+        
+      
         publish_message(0.0, M_PI_2, 2.0);
-        publish_message(2.0, 0.0, 2.0);      // Move forward along the top of the square
-        publish_message(0.0,   M_PI / 6, 2.0); // Turn 120 degrees to start drawing the triangle side
-        publish_message(2.0, 0.0, 2.0);      // Move forward to draw the first side of the triangle
-        publish_message(0.0, 2 * M_PI / 3, 2.0); // Turn 120 degrees for the second triangle side
-        publish_message(2.0, 0.0, 2.0);      // Complete the triangle
-        publish_message(0.0,   M_PI / 6, 2.0); // Turn 120 degrees to start drawing the triangle side
+        publish_message(2.0, 0.0, 2.0);      
+        publish_message(0.0,   M_PI / 6, 2.0); 
+        publish_message(2.0, 0.0, 2.0);     
+        publish_message(0.0, 2 * M_PI / 3, 2.0); 
+        publish_message(2.0, 0.0, 2.0);     
+        publish_message(0.0,   M_PI / 6, 2.0); 
         publish_message(2.0, 0.0, 2.0);
         publish_message(0.0, M_PI_2, 2.0);
         publish_message(0.5, 0.0, 2.0);
