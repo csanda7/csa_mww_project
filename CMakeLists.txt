@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.8)
-project(csa_mww_housedraw)
+project(csa_mww_project)
 
 # Default to C++14
 if(NOT CMAKE_CXX_STANDARD)
@@ -19,18 +19,17 @@ find_package(turtlesim REQUIRED)
 set(ament_dependencies
   rclcpp
   std_msgs
-  geometry_msgs
   turtlesim
+  geometry_msgs
 )
 
-# add_executable(house_draw src/house_draw.cpp)
-# ament_target_dependencies(house_draw ${ament_dependencies} )
+add_executable(house_draw src/house_draw.cpp)
+ament_target_dependencies(house_draw ${ament_dependencies} )
 
 install(DIRECTORY launch
   DESTINATION share/${PROJECT_NAME})
 
-install(TARGETS
-house_draw
+install(TARGETS house_draw
 DESTINATION lib/${PROJECT_NAME})
 
 

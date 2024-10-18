@@ -5,13 +5,13 @@ def generate_launch_description():
     return LaunchDescription([
         Node(
             package='turtlesim',
-            namespace='turtlesim1',
+            #namespace='turtlesim1',
             executable='turtlesim_node',
             name='sim'
         ),
 
         Node(
-            package='csa_mww_housedraw',
+            package='csa_mww_project',
             executable='house_draw',
             output='screen',
         ),

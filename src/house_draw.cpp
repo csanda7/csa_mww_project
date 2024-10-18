@@ -8,7 +8,6 @@ class HouseDraw : public rclcpp::Node
 public:
     HouseDraw() : Node("house_draw"), count_(0)
     {
-   
         publisher_ = this->create_publisher<geometry_msgs::msg::Twist>("/turtle1/cmd_vel", 10);
         
         timer_ = this->create_wall_timer(std::chrono::milliseconds(1), std::bind(&HouseDraw::loop, this)); 
@@ -18,7 +17,7 @@ public:
 
 private:
 
-    void publish_message(double fwd, double turn)
+    void publish_message(double fwd, double turn, double duration)
     {
         auto message = geometry_msgs::msg::Twist();
         message.linear.x = fwd;
@@ -26,27 +25,40 @@ private:
         count_++;
         RCLCPP_INFO(this->get_logger(), "Step %ld. speed: '%.1f' turn: '%.1f'", count_, message.linear.x, message.angular.z);
         publisher_->publish(message);
-        std::this_thread::sleep_for(std::chrono::seconds(2));
-        
+        std::this_thread::sleep_for(std::chrono::seconds((int)duration)); 
     }
+
     void loop()
     {
         RCLCPP_INFO_STREAM(this->get_logger(), "Loop started.");
-        std::this_thread::sleep_for(std::chrono::seconds(2)); 
-        publish_message(0.0, M_PI_2);                         
-        publish_message(M_PI_2, -1 * M_PI_2);                 
-        publish_message(0.0, M_PI_2);
-        publish_message(M_PI_2, -1 * M_PI_2); 
-        publish_message(0.0, M_PI);           
-        publish_message(4.06, 0.0);           
 
-        publish_message(0.0, M_PI);           
-        publish_message(M_PI_2, -1 * M_PI_2); 
-        publish_message(0.0, M_PI_2);
-        publish_message(M_PI_2, -1 * M_PI_2); 
-        publish_message(0.0, M_PI);           
+        for (int i = 0; i < 4; i++) {
+            publish_message(2.0, 0.0, 2.0);    // Move forward to draw one side of the square
+            publish_message(0.0, M_PI_2, 2.0); // Turn 90 degrees to the right
+        }
 
-        RCLCPP_INFO_STREAM(this->get_logger(), "Program finished");
+        // Move to start of the triangle roof (top of the square)
+        publish_message(2.0, 0.0, 2.0);  // Move to the top side of the square
+        
+        // Draw the equilateral triangle roof
+        publish_message(0.0, M_PI_2, 2.0);
+        publish_message(2.0, 0.0, 2.0);      // Move forward along the top of the square
+        publish_message(0.0,   M_PI / 6, 2.0); // Turn 120 degrees to start drawing the triangle side
+        publish_message(2.0, 0.0, 2.0);      // Move forward to draw the first side of the triangle
+        publish_message(0.0, 2 * M_PI / 3, 2.0); // Turn 120 degrees for the second triangle side
+        publish_message(2.0, 0.0, 2.0);      // Complete the triangle
+        publish_message(0.0,   M_PI / 6, 2.0); // Turn 120 degrees to start drawing the triangle side
+        publish_message(2.0, 0.0, 2.0);
+        publish_message(0.0, M_PI_2, 2.0);
+        publish_message(0.5, 0.0, 2.0);
+        publish_message(0.0,  M_PI_2, 2.0);
+        publish_message(0.7, 0.0, 2.0);
+        publish_message(0.0, -1 * M_PI_2, 2.0);
+        publish_message(0.3, 0.0, 2.0);
+        publish_message(0.0, -1 * M_PI_2, 2.0);
+        publish_message(0.7, 0.0, 2.0);
+
+        RCLCPP_INFO_STREAM(this->get_logger(), "House drawing finished");
         rclcpp::shutdown();
     }
 
