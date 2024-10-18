@@ -30,7 +30,7 @@ install(DIRECTORY launch
   DESTINATION share/${PROJECT_NAME})
 
 install(TARGETS
-# simple_sub_node
+house_draw
 DESTINATION lib/${PROJECT_NAME})
 
 
